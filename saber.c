@@ -35,6 +35,8 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
+#include "fips202.h"
+
 //*****************************************************************************
 //
 //! \addtogroup example_list
@@ -97,6 +99,24 @@ ConfigureUART(void)
     UARTStdioConfig(0, 115200, g_ui32SysClock);
 }
 
+// Converts a hexadecimal string input character to its integer value
+int charToInt(char *x) {
+
+    if (*x >= 'A' && *x <= 'F') {
+        return *x - 'A' + 10;
+    }
+    else if (*x >= 'a' && *x <= 'f') {
+        return *x - 'a' + 10;
+    }
+    else if (*x >= '0' && *x <= '9') {
+        return *x - '0';
+    }
+
+    UARTprintf("charToInt failed, input out of bounds\n");
+
+    return 0;
+}
+
 //*****************************************************************************
 //
 // Print "Hello World!" to the UART on the Intelligent UART Module.
@@ -134,6 +154,42 @@ main(void)
     // Hello!
     //
     UARTprintf("Hello, world!\n");
+
+    /* String Hex to unsigned char array */
+    char seedString[65] = "061550234D158C5EC95595FE04EF7A25767F2E24CC2BC479D09D86DC9ABCFDE7";
+
+    unsigned char seed[32];
+
+    int i;
+    for (i = 0; i < 32; i++) {
+
+        seed[i] = charToInt(&seedString[i*2])*16 + charToInt(&seedString[i*2 + 1]);
+    }
+
+    UARTprintf("Before shake128\n");
+
+    for (i = 0; i < 32; i++) {
+        UARTprintf("%02X", seed[i]);
+    }
+    UARTprintf("\n");
+
+    shake128(seed, 32, seed, 32); // for not revealing system RNG state
+
+    UARTprintf("After shake128\n");
+
+    for (i = 0; i < 32; i++) {
+        UARTprintf("%02X", seed[i]);
+    }
+    UARTprintf("\n");
+
+    /* End String Hex to unsigned char array */
+
+    /* START SABER */
+    
+    
+    
+    
+    /* END SABER */
 
     //
     // We are finished.  Hang around flashing D1.
