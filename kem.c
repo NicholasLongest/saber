@@ -5,7 +5,7 @@
 #include "SABER_indcpa.h"
 #include "kem.h"
 #include "verify.h"
-#include "rng.h"
+// #include "rng.h"
 #include "fips202.h"
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -19,7 +19,7 @@ int crypto_kem_keypair(unsigned char *pk, unsigned char *sk)
 
   sha3_256(sk+SABER_SECRETKEYBYTES-64, pk, SABER_INDCPA_PUBLICKEYBYTES);  // Then hash(pk) is appended.	
 
-  randombytes(sk+SABER_SECRETKEYBYTES-SABER_KEYBYTES , SABER_KEYBYTES );    // Remaining part of sk contains a pseudo-random number. 
+  //randombytes(sk+SABER_SECRETKEYBYTES-SABER_KEYBYTES , SABER_KEYBYTES );    // Remaining part of sk contains a pseudo-random number. 
 								      																								// This is output when check in crypto_kem_dec() fails. 
   return(0);	
 }
@@ -30,7 +30,7 @@ int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
   unsigned char kr[64];                             	  // Will contain key, coins
   unsigned char buf[64];                          
 
-  randombytes(buf, 32);
+  //randombytes(buf, 32);
 
 	sha3_256(buf,buf,32);            			  // BUF[0:31] <-- random message (will be used as the key for client) Note: hash doesnot release system RNG output
 
