@@ -36,6 +36,9 @@
 #include "utils/uartstdio.h"
 
 #include "fips202.h"
+#include "api.h"
+#include "SABER_indcpa.h"
+#include <stdlib.h>
 
 //*****************************************************************************
 //
@@ -156,7 +159,7 @@ main(void)
     UARTprintf("Hello, world!\n");
 
     /* String Hex to unsigned char array */
-    char seedString[65] = "061550234D158C5EC95595FE04EF7A25767F2E24CC2BC479D09D86DC9ABCFDE7";
+    /*char seedString[65] = "061550234D158C5EC95595FE04EF7A25767F2E24CC2BC479D09D86DC9ABCFDE7";
 
     unsigned char seed[32];
 
@@ -180,14 +183,90 @@ main(void)
     for (i = 0; i < 32; i++) {
         UARTprintf("%02X", seed[i]);
     }
-    UARTprintf("\n");
+    UARTprintf("\n");*/
 
     /* End String Hex to unsigned char array */
 
     /* START SABER */
-    
-    
-    
+
+    srand(0); // Initialize random, can replace 0 with current time for random seed
+
+    uint8_t *pk = (uint8_t *)malloc(CRYPTO_PUBLICKEYBYTES * sizeof(uint8_t));   // public key
+    uint8_t *sk = (uint8_t *)malloc(CRYPTO_SECRETKEYBYTES * sizeof(uint8_t));   // secret key
+    uint8_t *ct = (uint8_t *)malloc(CRYPTO_CIPHERTEXTBYTES * sizeof(uint8_t));  // cipher text
+    uint8_t *ss_a = (uint8_t *)malloc(CRYPTO_BYTES * sizeof(uint8_t));          // shared secret a
+    uint8_t *ss_b = (uint8_t *)malloc(CRYPTO_BYTES * sizeof(uint8_t));          // shared secret b
+
+    if (pk == NULL || sk == NULL) {
+
+        if (pk == NULL)
+            UARTprintf("pk is NULL\n");
+
+        if (sk == NULL)
+            UARTprintf("sk is NULL\n");
+
+        UARTprintf("Malloc Failed.\n");
+    }
+    else {
+        
+        //indcpa_kem_keypair(pk, sk);
+        
+        //Generation of secret key sk and public key pk pair
+	    crypto_kem_keypair(pk, sk);
+
+	    //Key-Encapsulation call; input: pk; output: ciphertext c, shared-secret ss_a;	
+	    crypto_kem_enc(ct, ss_a, pk);
+
+	    //Key-Decapsulation call; input: sk, ct; output: shared-secret ss_b;	
+	    crypto_kem_dec(ss_b, ct, sk);
+
+        int32_t i;
+        UARTprintf("pk = ");
+        for (i = 0; i < CRYPTO_PUBLICKEYBYTES; i++) {
+            UARTprintf("%02X", pk[i]);
+        }
+        UARTprintf("\n\n");
+
+        UARTprintf("sk = ");
+        for (i = 0; i < CRYPTO_SECRETKEYBYTES; i++) {
+            UARTprintf("%02X", sk[i]);
+        }
+        UARTprintf("\n\n");
+
+        UARTprintf("ct = ");
+        for (i = 0; i < CRYPTO_CIPHERTEXTBYTES; i++) {
+            UARTprintf("%02X", ct[i]);
+        }
+        UARTprintf("\n\n");
+
+        UARTprintf("ss_a = ");
+        for (i = 0; i < CRYPTO_BYTES; i++) {
+            UARTprintf("%02X", ss_a[i]);
+        }
+        UARTprintf("\n");
+
+        UARTprintf("ss_b = ");
+        for (i = 0; i < CRYPTO_BYTES; i++) {
+            UARTprintf("%02X", ss_b[i]);
+        }
+        UARTprintf("\n");
+
+        free(pk);
+        pk = NULL;
+
+        free(sk);
+        sk = NULL;
+
+        free(ct);
+        ct = NULL;
+
+        free(ss_a);
+        ss_a = NULL;
+
+        free(ss_b);
+        ss_b = NULL;
+
+    }
     
     /* END SABER */
 

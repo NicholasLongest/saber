@@ -22,6 +22,11 @@ saber.obj: C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/uart.h
 saber.obj: C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.h
 saber.obj: C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/stdarg.h
 saber.obj: ../fips202.h
+saber.obj: ../api.h
+saber.obj: ../SABER_indcpa.h
+saber.obj: C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/stdlib.h
+saber.obj: C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/_ti_config.h
+saber.obj: C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/linkage.h
 
 ../saber.c:
 
@@ -66,4 +71,14 @@ C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.h:
 C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/stdarg.h:
 
 ../fips202.h:
+
+../api.h:
+
+../SABER_indcpa.h:
+
+C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/stdlib.h:
+
+C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/_ti_config.h:
+
+C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/linkage.h:
 

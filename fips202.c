@@ -396,11 +396,9 @@ void shake128(unsigned char *output, unsigned long long outlen,
   unsigned long long nblocks = outlen/SHAKE128_RATE;
   size_t i;
 
-  memset(s, 0, sizeof(s));
-
-  /*for (i = 0; i < 25; ++i) {
+  for (i = 0; i < 25; ++i) {
     s[i] = 0;
-  }*/
+  }
 
   /* Absorb input */
   keccak_absorb(s, SHAKE128_RATE, input, inlen, 0x1F);

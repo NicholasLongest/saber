@@ -7,6 +7,7 @@
 #include "verify.h"
 // #include "rng.h"
 #include "fips202.h"
+#include <stdlib.h> // random gen
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int crypto_kem_keypair(unsigned char *pk, unsigned char *sk)
@@ -21,6 +22,10 @@ int crypto_kem_keypair(unsigned char *pk, unsigned char *sk)
 
   //randombytes(sk+SABER_SECRETKEYBYTES-SABER_KEYBYTES , SABER_KEYBYTES );    // Remaining part of sk contains a pseudo-random number. 
 								      																								// This is output when check in crypto_kem_dec() fails. 
+  for (i = 0; i < SABER_KEYBYTES; i++) {
+	  sk[i+SABER_SECRETKEYBYTES-SABER_KEYBYTES] = rand() % 256; // 0 - 255
+  }
+  
   return(0);	
 }
 
@@ -31,6 +36,11 @@ int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
   unsigned char buf[64];                          
 
   //randombytes(buf, 32);
+ 
+  int i;
+  for (i = 0; i < 32; i++) {
+	  buf[i] = rand() % 256; // 0 - 255
+  }
 
 	sha3_256(buf,buf,32);            			  // BUF[0:31] <-- random message (will be used as the key for client) Note: hash doesnot release system RNG output
 

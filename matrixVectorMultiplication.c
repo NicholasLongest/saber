@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "poly.h"
+#include "matrixVectorMultiplication.h"
 
 // Polynomial multiplication (modulo q)
 void poly_mult(uint16_t *a, uint16_t *b, uint16_t *res, size_t q, size_t n) {

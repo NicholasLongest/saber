@@ -1,5 +1,6 @@
 #include <string.h>
 #include <stdint.h>
+#include <stdlib.h> // random gen
 #include "SABER_indcpa.h"
 #include "poly.h"
 #include "pack_unpack.h"
@@ -7,6 +8,7 @@
 //#include "rng.h"
 #include "fips202.h"
 #include "SABER_params.h"
+#include "matrixVectorMultiplication.h"
 
 
 
@@ -41,9 +43,9 @@ void GenMatrix(polyvec *a, const unsigned char *seed)
     for(j=0;j<SABER_K;j++)
     {
 	BS2POL(buf+(i*SABER_K+j)*one_vector,temp_ar);
-	for(k=0;k<SABER_N;k++){
-		a[i].vec[j].coeffs[k] = (temp_ar[k])& mod ;
-	}
+		for(k=0;k<SABER_N;k++){
+			a[i].vec[j].coeffs[k] = (temp_ar[k])& mod;
+		}
     }
   }
 
@@ -67,8 +69,14 @@ void indcpa_kem_keypair(unsigned char *pk, unsigned char *sk)
   uint16_t res[SABER_K][SABER_N];
 
   // randombytes(seed, SABER_SEEDBYTES); HARDCODE THIS VALUE --------------------------------------------------------------------------------
+  for (i = 0; i < SABER_SEEDBYTES; i++) {
+	seed[i] = rand() % 256; // 0 - 255
+  }
   shake128(seed, SABER_SEEDBYTES, seed, SABER_SEEDBYTES); // for not revealing system RNG state
   // randombytes(noiseseed, SABER_COINBYTES); HARDCODE THIS VALUE ---------------------------------------------------------------------------
+  for (i = 0; i < SABER_COINBYTES; i++) {
+	noiseseed[i] = rand() % 256; // 0 - 255
+  }
 
   GenMatrix(a, seed);	//sample matrix A
 
@@ -358,9 +366,6 @@ void InnerProd(uint16_t pkcl[SABER_K][SABER_N],uint16_t skpv[SABER_K][SABER_N],u
 				acc[k]=0; //clear the accumulator
 			}
 	}
-
-
-
 
 }
 

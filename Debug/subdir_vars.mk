@@ -12,7 +12,8 @@ C_SRCS += \
 ../SABER_indcpa.c \
 ../cbd.c \
 ../fips202.c \
-../matrixVecMul.c \
+../kem.c \
+../matrixVectorMultiplication.c \
 ../pack_unpack.c \
 ../poly.c \
 ../poly_mul.c \
@@ -24,7 +25,8 @@ C_DEPS += \
 ./SABER_indcpa.d \
 ./cbd.d \
 ./fips202.d \
-./matrixVecMul.d \
+./kem.d \
+./matrixVectorMultiplication.d \
 ./pack_unpack.d \
 ./poly.d \
 ./poly_mul.d \
@@ -36,7 +38,8 @@ OBJS += \
 ./SABER_indcpa.obj \
 ./cbd.obj \
 ./fips202.obj \
-./matrixVecMul.obj \
+./kem.obj \
+./matrixVectorMultiplication.obj \
 ./pack_unpack.obj \
 ./poly.obj \
 ./poly_mul.obj \
@@ -48,7 +51,8 @@ OBJS__QUOTED += \
 "SABER_indcpa.obj" \
 "cbd.obj" \
 "fips202.obj" \
-"matrixVecMul.obj" \
+"kem.obj" \
+"matrixVectorMultiplication.obj" \
 "pack_unpack.obj" \
 "poly.obj" \
 "poly_mul.obj" \
@@ -60,7 +64,8 @@ C_DEPS__QUOTED += \
 "SABER_indcpa.d" \
 "cbd.d" \
 "fips202.d" \
-"matrixVecMul.d" \
+"kem.d" \
+"matrixVectorMultiplication.d" \
 "pack_unpack.d" \
 "poly.d" \
 "poly_mul.d" \
@@ -72,7 +77,8 @@ C_SRCS__QUOTED += \
 "../SABER_indcpa.c" \
 "../cbd.c" \
 "../fips202.c" \
-"../matrixVecMul.c" \
+"../kem.c" \
+"../matrixVectorMultiplication.c" \
 "../pack_unpack.c" \
 "../poly.c" \
 "../poly_mul.c" \
