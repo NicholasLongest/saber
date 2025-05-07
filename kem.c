@@ -29,23 +29,22 @@ int crypto_kem_keypair(unsigned char *pk, unsigned char *sk)
   return(0);	
 }
 
-int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
-//int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk, unsigned char *pt)
+//int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
+int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk, unsigned char *pt)
 {
 
   unsigned char kr[64];                             	  // Will contain key, coins
   unsigned char buf[64];                          
-  //unsigned char pt[32];
 
   //randombytes(buf, 32);
  
   int i;
   for (i = 0; i < 32; i++) {
-	  buf[i] = rand() % 256; // 0 - 255
-    //buf[i] = pt[i];
+	  //buf[i] = rand() % 256; // 0 - 255
+    buf[i] = pt[i];
   }
 
-	sha3_256(buf,buf,32);            			  // BUF[0:31] <-- random message (will be used as the key for client) Note: hash doesnot release system RNG output
+	//sha3_256(buf,buf,32);            			  // BUF[0:31] <-- random message (will be used as the key for client) Note: hash doesnot release system RNG output
 
   sha3_256(buf+32, pk, SABER_INDCPA_PUBLICKEYBYTES);    // BUF[32:63] <-- Hash(public key);  Multitarget countermeasure for coins + contributory KEM 
 
@@ -62,7 +61,7 @@ int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk)
 }
 
 
-int crypto_kem_dec(unsigned char *k, const unsigned char *c, const unsigned char *sk)
+int crypto_kem_dec(unsigned char *k, const unsigned char *c, const unsigned char *sk, unsigned char *pt)
 {
   int i, fail;
   unsigned char cmp[SABER_BYTES_CCA_DEC];
@@ -71,6 +70,10 @@ int crypto_kem_dec(unsigned char *k, const unsigned char *c, const unsigned char
   const unsigned char *pk = sk + SABER_INDCPA_SECRETKEYBYTES;
 
    indcpa_kem_dec(sk, c, buf);			     // buf[0:31] <-- message
+
+   for (i=0;i<32;i++) {
+    pt[i] = buf[i];
+   }
 
  
   // Multitarget countermeasure for coins + contributory KEM 

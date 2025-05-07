@@ -27,6 +27,7 @@ saber.obj: ../SABER_indcpa.h
 saber.obj: C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/stdlib.h
 saber.obj: C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/_ti_config.h
 saber.obj: C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/linkage.h
+saber.obj: C:/ti/TivaWare_C_Series-2.2.0.295/inc/TM4C1294NCPDT.h
 
 ../saber.c:
 
@@ -81,4 +82,6 @@ C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/stdlib.h:
 C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/_ti_config.h:
 
 C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include/linkage.h:
+
+C:/ti/TivaWare_C_Series-2.2.0.295/inc/TM4C1294NCPDT.h:
 

@@ -1,67 +1,67 @@
 [
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl/drivers/pinout.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/startup_ccs.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/saber.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/cbd.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/fips202.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/poly.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/pack_unpack.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/poly_mul.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/SABER_indcpa.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/verify.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/matrixVectorMultiplication.c"
    },
    {
       "directory" : "C:/Users/nicho/workspace_ccstheia/saber/Debug",
-      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
+      "command"   : "clang++ -I\"C:/Users/nicho/workspace_ccstheia/saber\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c1294xl\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295\" -I\"C:/ti/TivaWare_C_Series-2.2.0.295/inc\" -I\"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C1294NCPDT -DTARGET_IS_TM4C129_RA2",
       "file"      : "C:/Users/nicho/workspace_ccstheia/saber/kem.c"
    }
 ]

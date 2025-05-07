@@ -151,7 +151,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 saber.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O2 --define=ccs="ccs" --define=PART_TM4C1294NCPDT --define=TARGET_IS_TM4C129_RA2 -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --ual -z -m"hello_ccs.map" --heap_size=32768 --stack_size=1024 -i"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/lib" -i"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="saber_linkInfo.xml" --rom_model -o "saber.out" $(ORDERED_OBJS)
+	"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O2 --define=ccs="ccs" --define=PART_TM4C1294NCPDT --define=TARGET_IS_TM4C129_RA2 -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --gen_func_subsections=on --abi=eabi --ual -z -m"hello_ccs.map" --heap_size=32768 --stack_size=1024 -i"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/lib" -i"C:/Users/nicho/Downloads/ti-cgt-arm_18.12.2.LTS/include" -i"C:/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="saber_linkInfo.xml" --rom_model -o "saber.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build

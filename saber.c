@@ -39,6 +39,7 @@
 #include "api.h"
 #include "SABER_indcpa.h"
 #include <stdlib.h>
+#include "TM4C1294NCPDT.h"
 
 //*****************************************************************************
 //
@@ -70,6 +71,9 @@ __error__(char *pcFilename, uint32_t ui32Line)
 {
 }
 #endif
+
+void SYSCLK_Init(void); // Initialize system clock to local oscillator
+
 
 //*****************************************************************************
 //
@@ -158,6 +162,7 @@ main(void)
     //
     UARTprintf("Hello, world!\n");
 
+
     /* String Hex to unsigned char array */
     /*char seedString[65] = "061550234D158C5EC95595FE04EF7A25767F2E24CC2BC479D09D86DC9ABCFDE7";
 
@@ -188,7 +193,7 @@ main(void)
     /* End String Hex to unsigned char array */
 
     /* START SABER */
-
+    
     srand(0); // Initialize random, can replace 0 with current time for random seed
 
     uint8_t *pk = (uint8_t *)malloc(CRYPTO_PUBLICKEYBYTES * sizeof(uint8_t));   // public key
@@ -215,15 +220,25 @@ main(void)
 	    crypto_kem_keypair(pk, sk);
 
 	    //Key-Encapsulation call; input: pk; output: ciphertext c, shared-secret ss_a;	
-	    crypto_kem_enc(ct, ss_a, pk);
+	    //crypto_kem_enc(ct, ss_a, pk);
 
-        //Key-Encapsulation call; input: pk, plaintext pt; output: ciphertext c, shared-secret ss_a;
-        //crypto_kem_enc(ct, ss_a, pk, pt)
+        char pt[64] = "DEADBEEFDEADBEEFDEADBEEFDEADBEEFDEADBEEFDEADBEEFDEADBEEFDEADBEEF";
 
-	    //Key-Decapsulation call; input: sk, ct; output: shared-secret ss_b;	
-	    crypto_kem_dec(ss_b, ct, sk);
+        unsigned char seed[32];
 
         int32_t i;
+        for (i = 0; i < 32; i++) {
+
+            seed[i] = charToInt(&pt[i*2])*16 + charToInt(&pt[i*2 + 1]);
+        }
+
+        //Key-Encapsulation call; input: pk, plaintext pt; output: ciphertext c, shared-secret ss_a;
+        crypto_kem_enc(ct, ss_a, pk, seed);
+
+        unsigned char plaintext[32];
+	    //Key-Decapsulation call; input: sk, ct; output: shared-secret ss_b;	
+	    crypto_kem_dec(ss_b, ct, sk, plaintext);
+
         UARTprintf("pk = ");
         for (i = 0; i < CRYPTO_PUBLICKEYBYTES; i++) {
             UARTprintf("%02X", pk[i]);
@@ -251,6 +266,12 @@ main(void)
         UARTprintf("ss_b = ");
         for (i = 0; i < CRYPTO_BYTES; i++) {
             UARTprintf("%02X", ss_b[i]);
+        }
+        UARTprintf("\n");
+
+        UARTprintf("pt = ");
+        for (i = 0; i < 32; i++) {
+            UARTprintf("%02X", plaintext[i]);
         }
         UARTprintf("\n");
 
@@ -298,4 +319,13 @@ main(void)
         //
         SysCtlDelay(g_ui32SysClock / 10 / 3);
     }
+}
+
+void SYSCLK_Init(void)
+{
+	//use main oscillator (XTAL @16 MHz)
+	//SYSCTL->RCC = 0x3D40;
+
+	//use main osciallator 5 MHZ, SYS DIV = 2 (expected frequency 2.5MHZ)
+  //SYSCTL->RCC = 0x803A 40;
 }

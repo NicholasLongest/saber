@@ -12,9 +12,9 @@ void indcpa_kem_enc(uint8_t *message, uint8_t *noiseseed, uint8_t *pk,  uint8_t 
 void indcpa_kem_dec(uint8_t *sk, uint8_t *ciphertext, uint8_t message_dec[]);
 
 int crypto_kem_keypair(unsigned char *pk, unsigned char *sk);
-int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk);
-//int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk, unsigned char *pt)
-int crypto_kem_dec(unsigned char *k, const unsigned char *c, const unsigned char *sk);
+//int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk);
+int crypto_kem_enc(unsigned char *c, unsigned char *k, const unsigned char *pk, unsigned char *pt)
+int crypto_kem_dec(unsigned char *k, const unsigned char *c, const unsigned char *sk, unsigned char *pt);
 
 
 uint64_t clock1,clock2;
