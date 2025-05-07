@@ -217,6 +217,9 @@ main(void)
 	    //Key-Encapsulation call; input: pk; output: ciphertext c, shared-secret ss_a;	
 	    crypto_kem_enc(ct, ss_a, pk);
 
+        //Key-Encapsulation call; input: pk, plaintext pt; output: ciphertext c, shared-secret ss_a;
+        //crypto_kem_enc(ct, ss_a, pk, pt)
+
 	    //Key-Decapsulation call; input: sk, ct; output: shared-secret ss_b;	
 	    crypto_kem_dec(ss_b, ct, sk);
 
