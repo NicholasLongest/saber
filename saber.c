@@ -73,6 +73,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
 #endif
 
 void SYSCLK_Init(void); // Initialize system clock to local oscillator
+void GPIO_Init(void); // Set up trigger pin and status LEDs
 
 
 //*****************************************************************************
@@ -129,18 +130,20 @@ int charToInt(char *x) {
 // Print "Hello World!" to the UART on the Intelligent UART Module.
 //
 //*****************************************************************************
-int
-main(void)
+int main(void)
 {
     //
     // Run from the PLL at 120 MHz.
     // Note: SYSCTL_CFG_VCO_240 is a new setting provided in TivaWare 2.2.x and
     // later to better reflect the actual VCO speed due to SYSCTL#22.
     //
-    g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
+    /*g_ui32SysClock = MAP_SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
                                              SYSCTL_OSC_MAIN |
                                              SYSCTL_USE_PLL |
                                              SYSCTL_CFG_VCO_240), 120000000);
+    */
+    g_ui32SysClock = 25000000;
+    SYSCLK_Init();
 
     //
     // Configure the device pins.
@@ -151,6 +154,12 @@ main(void)
     // Enable the GPIO pins for the LED D1 (PN1).
     //
     MAP_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_1);
+    MAP_GPIOPinTypeGPIOOutput(GPIO_PORTN_BASE, GPIO_PIN_0);
+
+    // Enable G peripherals for trigger output
+    MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOG);
+    GPIOPinTypeGPIOOutput(GPIO_PORTG_BASE, GPIO_PIN_1);
+
 
     //
     // Initialize the UART.
@@ -275,22 +284,56 @@ main(void)
         }
         UARTprintf("\n");
 
-        free(pk);
-        pk = NULL;
+        while(1)
+        {
+            //
+            // Turn on D1.
+            //
+            GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1, GPIO_PIN_1); // D1
+            GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_1, GPIO_PIN_1); // PG1 Trigger High
+            //GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0); // D2
 
-        free(sk);
-        sk = NULL;
+            //
+            // Delay for a bit.
+            //
+            //SysCtlDelay(25000000 / 3); // If clock frequency is 25 MHz, will delay for 1 second
 
-        free(ct);
-        ct = NULL;
+            UARTprintf("hello\n");
 
-        free(ss_a);
-        ss_a = NULL;
+            //Key-Encapsulation call; input: pk, plaintext pt; output: ciphertext c, shared-secret ss_a;
+            crypto_kem_enc(ct, ss_a, pk, seed);
 
-        free(ss_b);
-        ss_b = NULL;
+            //
+            // Turn off D1.
+            //
+            GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1, 0); // D1
+            GPIOPinWrite(GPIO_PORTG_BASE, GPIO_PIN_1, 0); // PG1 Trigger Low
+            //GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0); // D2
+
+            UARTprintf("hello\n");
+
+            //
+            // Delay for a bit.
+            //
+            SysCtlDelay(25000000 / 3 / 100);
+        }
 
     }
+
+    free(pk);
+    pk = NULL;
+
+    free(sk);
+    sk = NULL;
+
+    free(ct);
+    ct = NULL;
+
+    free(ss_a);
+    ss_a = NULL;
+
+    free(ss_b);
+    ss_b = NULL;
     
     /* END SABER */
 
@@ -302,30 +345,51 @@ main(void)
         //
         // Turn on D1.
         //
-        LEDWrite(CLP_D1, 1);
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1, GPIO_PIN_1); // D1
+        //GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, GPIO_PIN_0); // D2
 
         //
         // Delay for a bit.
         //
-        SysCtlDelay(g_ui32SysClock / 10 / 3);
+        SysCtlDelay(25000000 / 3); // If clock frequency is 25 MHz, will delay for 1 second
 
         //
         // Turn off D1.
         //
-        LEDWrite(CLP_D1, 0);
+        GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1, 0); // D1
+        //GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0); // D2
 
         //
         // Delay for a bit.
         //
-        SysCtlDelay(g_ui32SysClock / 10 / 3);
+        SysCtlDelay(25000000 / 3);
     }
 }
 
 void SYSCLK_Init(void)
 {
-	//use main oscillator (XTAL @16 MHz)
-	//SYSCTL->RCC = 0x3D40;
+	// Use main oscillator
 
-	//use main osciallator 5 MHZ, SYS DIV = 2 (expected frequency 2.5MHZ)
-  //SYSCTL->RCC = 0x803A 40;
+    // Main Oscillator Control
+	SYSCTL_MOSCCTL_R &= ~SYSCTL_MOSCCTL_NOXTAL;  // Enable crystal
+    SYSCTL_MOSCCTL_R &= ~SYSCTL_MOSCCTL_PWRDN;   // Power up MOSC
+    SYSCTL_MOSCCTL_R |= SYSCTL_MOSCCTL_OSCRNG;   // Oscillator range
+    SYSCTL_MOSCCTL_R |= SYSCTL_MOSCCTL_MOSCIM;   // MOSC Failure Action
+    SYSCTL_MOSCCTL_R |= SYSCTL_MOSCCTL_CVAL;     // Clock Validation for MOSC
+
+    // Run Sleep Clock Configuration
+    SYSCTL_RSCLKCFG_R &= ~SYSCTL_RSCLKCFG_OSCSRC_M;   // Clear the oscillator source
+    SYSCTL_RSCLKCFG_R |= SYSCTL_RSCLKCFG_OSCSRC_MOSC; // Set oscillator source to MOSC
+    SYSCTL_RSCLKCFG_R &= ~SYSCTL_RSCLKCFG_USEPLL;     // Do not use PLL, instead use OSCSRC
+    SYSCTL_RSCLKCFG_R &= ~SYSCTL_RSCLKCFG_OSYSDIV_M;  // Set the Oscillator Divider field to 0
+                                                                        // Divides by 0 + 1 = 1
+
 }
+
+void GPIO_Init(void)
+{
+    // 
+
+}
+
+
